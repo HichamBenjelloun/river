@@ -21,6 +21,6 @@ sudo npm install -g gulp
 
 ## Get started
 ```
-npm install
+npm install && gulp
 gnome-open index.html
 ```
