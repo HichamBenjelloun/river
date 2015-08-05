@@ -1,0 +1,35 @@
+
+
+import Source from '../core/sources/Source';
+import TodoActions from '../actions/TodoActions';
+
+class TodoSource extends Source {
+
+    constructor() {
+        super();
+    }
+
+    fetch() {
+        let data = [
+            {
+                id: 1,
+                text: 'A',
+                done: false
+            },
+            {
+                id: 2,
+                text: 'B',
+                done: false
+            },
+            {
+                id: 3,
+                text: 'C',
+                done: false
+            }
+        ];
+
+        TodoActions.receiveData(data);
+    }
+}
+
+export default new TodoSource();
