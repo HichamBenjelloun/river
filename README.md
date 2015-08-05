@@ -12,8 +12,9 @@ The application is developed with ECMAScript 6 and implements the `Flux` archite
 
 The framework has its own base classes that sources, stores, models derive from and that handle common operations. See the `Todo` example for more information on how to use the framework.
 
+[Check out the tutorials on River!](https://github.com/HichamBenjelloun/river/wiki)
 
-## Dependencies
+## Install dependencies
 ```
 sudo apt-get install npm nodejs-legacy
 sudo npm install -g gulp
