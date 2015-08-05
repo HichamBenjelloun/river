@@ -25,6 +25,6 @@
     "flux": "~2.0.3",
     "react": "~0.13.3",
     "eventemitter3": "~1.1.1",
-    "validator": "~4.0.1"
+    "validator": "~3.43.0"
   }
 }
