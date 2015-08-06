@@ -9,8 +9,8 @@ class TodoSource extends Source {
         super();
     }
 
-    fetch() {
-        let data = [
+    data() {
+        return [
             {
                 id: 1,
                 text: 'A',
@@ -27,9 +27,16 @@ class TodoSource extends Source {
                 done: false
             }
         ];
+    }
 
+    action(data) {
         TodoActions.receiveData(data);
     }
+
+    fetch() {
+        this.action(this.data());
+    }
+
 }
 
 export default new TodoSource();

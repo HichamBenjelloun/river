@@ -2,7 +2,6 @@
 import Dispatcher from '../core/dispatcher/Dispatcher'
 import TodoConstants from '../constants/TodoConstants';
 
-
 export default {
 
     receiveData(data) {

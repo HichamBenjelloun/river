@@ -1,6 +1,5 @@
 
 import Model from '../core/models/Model';
-
 import CharField from '../core/models/fields/CharField';
 import BooleanField from '../core/models/fields/BooleanField';
 
