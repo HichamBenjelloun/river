@@ -10,11 +10,11 @@ class Todo extends Model {
         super(values);
     }
 
-    setFields() {
-        this.setField('text',
-            new CharField(this.values['text'], {required: true, max_length: 10}));
-        this.setField('done',
-            new BooleanField(this.values['done'], {required: true}));
+    fields() {
+        return {
+            'text': new CharField(this.values['text'], {required: true, max_length: 10}),
+            'done': new BooleanField(this.values['done'], {required: true})
+        }
     }
 
 }

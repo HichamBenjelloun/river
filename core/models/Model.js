@@ -24,11 +24,8 @@ class Model {
   constructor(values) {
     this._values = values;
     this._fields = {};
-    if(this.setFields)
-      this.setFields();
-    else
-      console.error("Erreur, la classe " + this.constructor.name +
-          " n'implémente pas la méthode `setFields()`");
+    this.setFields();
+
   }
 
   /**
@@ -48,6 +45,23 @@ class Model {
    */
   setField(name, field) {
     this._fields[name] = field;
+  }
+
+  /**
+   * Définit les champs du modèle à partir de la méthode fields définie dans le modèle spécifique.
+   *
+   */
+  setFields() {
+    if(this.fields) {
+      let fields = this.fields();
+
+      for(let key of Object.keys(fields)) {
+        this.setField(key, fields[key]);
+      }
+    } else {
+      console.error("Erreur, la classe " + this.constructor.name +
+          " n'implémente pas la méthode `setFields()`");
+    }
   }
 
   /**
