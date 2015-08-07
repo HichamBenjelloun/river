@@ -12,9 +12,7 @@ gulp.task('build', function () {
         extensions: ['.js'],
         debug: true
     })
-        .transform(babelify.configure({
-            stage: 0
-        }))
+        .transform(babelify.configure({stage: 0}))
         .bundle()
         .pipe(source('app.js'))
         .pipe(gulp.dest('build'));

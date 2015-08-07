@@ -16,13 +16,6 @@ class IntegerField extends Field {
     this.setValidator(IntegerField.MAX_VALUE, this.hasMaxValueError);
   }
 
-  setDefaultErrorMessages() {
-    this.setErrorMessage(IntegerField.MIN_VALUE, "La valeur de ce champs doit être supérieure à " +
-        this.options[IntegerField.MIN_VALUE]);
-    this.setErrorMessage(IntegerField.MIN_VALUE, "La valeur de ce champs doit être inférieure à " +
-        this.options[IntegerField.MAX_VALUE]);
-  }
-
   hasTypeError() {
     return validator.isInt(this.value);
   }

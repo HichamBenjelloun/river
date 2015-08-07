@@ -10,8 +10,7 @@ class TodoList extends React.Component {
 
     render() {
         let props = this.props;
-        let todos = [for ([key, todo] of props.todos.entries())
-            <TodoItem key={key} todo={todo} />];
+        let todos = [for ([key, todo] of props.todos.entries()) <TodoItem key={key} todo={todo} />];
 
         return <ul>{todos}</ul>
     }

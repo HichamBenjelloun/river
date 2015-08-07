@@ -8,14 +8,6 @@ class BooleanField extends Field {
     super(value, options);
   }
 
-  setValidators() {
-    // Pas de validation autre que le type du champs.
-  }
-
-  setDefaultErrorMessages() {
-    // Pas d'autre message d'erreur que le type.
-  }
-
   hasTypeError() {
     return !validator.isBoolean(this.value);
   }

@@ -14,11 +14,6 @@ class CharField extends Field {
     this.setValidator(CharField.MAX_LENGTH, this.hasMaxLengthError);
   }
 
-  setDefaultErrorMessages() {
-    this.setErrorMessage(CharField.MAX_LENGTH, "La longueur de ce champs doit être inférieure à "
-        + this.options[CharField.MAX_LENGTH]);
-  }
-
   hasTypeError() {
     return false;
   }

@@ -4,7 +4,6 @@ import React from 'react';
 class River {
 
     constructor() {
-
     }
 
     render(element, domId) {

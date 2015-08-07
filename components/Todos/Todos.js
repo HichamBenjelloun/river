@@ -18,8 +18,6 @@ class Todos extends React.Component {
     componentDidMount() {
         TodoStore.addChangeListener(this._onChange.bind(this));
         window.addEventListener("keydown", this._handleKeyPressed.bind(this), false);
-
-        // Request data
         TodoStore.requestData();
     }
 
@@ -57,9 +55,6 @@ class Todos extends React.Component {
 
     _onCreateClick() {
         TodoActions.create(this.state.newItemValue);
-        this.setState({
-            newItemValue: ''
-        });
     }
 
     _handleKeyPressed(event) {
@@ -67,7 +62,6 @@ class Todos extends React.Component {
             this._onCreateClick();
         }
     }
-
 
     _onChange() {
         this.setState({

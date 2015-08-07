@@ -14,11 +14,6 @@ class TodoStore extends GroupStore {
         this._errors = {};
     }
 
-    /**
-     * Modifie son état interne en fonction d'une action donnée,
-     * et émet éventuellement un événement notifiant un changement de son état interne.
-     * @param payload
-     */
     handle(payload) {
         let action = payload.action;
 
@@ -41,33 +36,18 @@ class TodoStore extends GroupStore {
                 this.emitChange();
                 break;
             default:
-            // Rien à faire ici.
+            // No-op.
         }
     }
 
-    /**
-     * Renvoie l'ensemble des erreurs associées à la création d'un item.
-     *
-     * @returns {*}
-     */
     getErrors() {
         return this._errors;
     }
 
-    /**
-     * Met à jour les erreurs associées à une entrée invalide.
-     *
-     * @param errors
-     */
     setErrors(errors) {
         this._errors = errors;
     }
 
-    /**
-     * Crée un nouvel item à partir du texte `text`
-     * @param text
-     *
-     */
     create(text) {
         let id = Date.now();
         let todo = new Todo({
@@ -84,18 +64,10 @@ class TodoStore extends GroupStore {
         }
     }
 
-    /**
-     * Supprime l'item d'identifiant `id`
-     * @param id
-     */
     destroy(id) {
         this.removeItem(id);
     }
 
-    /**
-     * Inverse l'état `done` de l'item d'identifiant `id`
-     * @param id
-     */
     toggle(id) {
         let todo = this.getItem(id);
         todo.setValue('done', !todo.getValue('done'));
