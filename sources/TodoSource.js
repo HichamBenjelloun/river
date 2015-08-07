@@ -13,6 +13,11 @@ class TodoSource extends Source {
             {
                 id: Date.now(),
                 text: 'Sample todo',
+                done: true
+            },
+            {
+                id: Date.now() + 1,
+                text: 'Another sample',
                 done: false
             }
         ];

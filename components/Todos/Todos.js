@@ -8,8 +8,13 @@ import TodoList from './TodoList';
 import InputAddTodo from './InputAddTodo';
 
 import mui from 'material-ui';
+
+let ThemeManager = new mui.Styles.ThemeManager();
+let Colors = mui.Styles.Colors;
+
 let FlatButton = mui.FlatButton;
 let AppBar = mui.AppBar;
+let Paper = mui.Paper;
 
 class Todos extends React.Component {
 
@@ -20,15 +25,20 @@ class Todos extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            todos: TodoStore.getAll(),
-            newItemValue: ''
+            todos: TodoStore.getAll()
         };
     }
 
     getChildContext() {
         return {
-            muiTheme: River.ThemeManager.getCurrentTheme()
+            muiTheme: ThemeManager.getCurrentTheme()
         }
+    }
+
+    componentWillMount() {
+        ThemeManager.setPalette({
+            primary1Color: Colors.lightBlue900
+        });
     }
 
     componentDidMount() {
@@ -43,21 +53,33 @@ class Todos extends React.Component {
     render() {
         let state = this.state;
 
+        let containerStyle = {
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            width: '100%'
+        };
+
         let contentStyle = {
             position: 'relative',
             top: '100px',
-            left: '100px',
-            width: '50%'
+            left: '30%',
+            width: '40%'
+        };
+
+        let paperStyle = {
+            position: 'relative',
+            top: '50px'
         };
 
         return (
-            <div>
-                <AppBar
-                    title="Todo App"
-                    iconClassNameRight="muidocs-icon-navigation-expand-more" />
+            <div style={containerStyle}>
+                <AppBar title="Todo App" />
                 <div style={contentStyle}>
                     <InputAddTodo />
-                    <TodoList todos={state.todos} />
+                    <Paper zDepth={1} style={paperStyle}>
+                        <TodoList todos={state.todos} />
+                    </Paper>
                 </div>
             </div>
         );

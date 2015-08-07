@@ -1,9 +1,7 @@
 import React from 'react';
 
 import TodoItem from './TodoItem';
-
 import mui from 'material-ui';
-
 let List = mui.List;
 
 class TodoList extends React.Component {
@@ -20,7 +18,7 @@ class TodoList extends React.Component {
         let props = this.props;
         let todos = [for ([key, todo] of props.todos.entries()) <TodoItem key={key} todo={todo} />];
 
-        return <List subheader="My todos">{todos}</List>
+        return <List subheader="Todos">{todos}</List>
     }
 
 }

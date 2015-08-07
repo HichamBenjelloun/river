@@ -22,9 +22,11 @@
     "babelify": "~6.1.3"
   },
   "dependencies": {
-    "flux": "~2.0.3",
-    "react": "~0.13.3",
     "eventemitter3": "~1.1.1",
+    "flux": "~2.0.3",
+    "material-ui": "^0.10.2",
+    "react": "~0.13.3",
+    "react-tap-event-plugin": "^0.1.7",
     "validator": "~4.0.2"
   }
 }

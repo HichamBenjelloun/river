@@ -2,6 +2,7 @@
 import React from 'react';
 import mui from 'material-ui';
 
+import TodoStore from '../../stores/TodoStore';
 import TodoActions from '../../actions/TodoActions';
 
 let FlatButton = mui.FlatButton;
@@ -30,17 +31,15 @@ class InputAddTodo extends React.Component {
 
     render() {
         let state = this.state;
+        let errors = TodoStore.getErrors();
+        errors = (Object.keys(errors).length == 0) ? null : JSON.stringify(errors);
 
-        return (
-            <div>
-                <TextField ref="input"
-                           hintText="Add todo..."
-                           value={state.value}
-                           onChange={this._handleChange.bind(this)} />
-                <FlatButton label={"Create"}
-                            onClick={this._onCreateClick.bind(this)} />
-            </div>
-        );
+        return <TextField
+            ref="input"
+            hintText="Add todo..."
+            value={state.value}
+            onChange={this._handleChange.bind(this)}
+            errorText={errors} />;
     }
 
     _handleChange(event) {
