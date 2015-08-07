@@ -6,7 +6,6 @@ class Model {
     this._values = values;
     this._fields = {};
     this.setFields();
-
   }
 
   get values() {
@@ -59,13 +58,6 @@ class Model {
     }
 
     return errors;
-  }
-
-  getError(fieldName) {
-    if(this._fields[fieldName].hasErrors())
-      errors[fieldName] = this._fields[fieldName].getErrors();
-    else
-      return {};
   }
 
 }

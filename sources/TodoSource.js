@@ -11,18 +11,8 @@ class TodoSource extends Source {
     data() {
         return [
             {
-                id: 1,
-                text: 'A',
-                done: false
-            },
-            {
-                id: 2,
-                text: 'B',
-                done: false
-            },
-            {
-                id: 3,
-                text: 'C',
+                id: Date.now(),
+                text: 'Sample todo',
                 done: false
             }
         ];

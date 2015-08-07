@@ -1,11 +1,21 @@
 import React from 'react';
+import River from '../../core/River';
 
 import TodoStore from '../../stores/TodoStore';
 import TodoActions from '../../actions/TodoActions';
 
 import TodoList from './TodoList';
+import InputAddTodo from './InputAddTodo';
+
+import mui from 'material-ui';
+let FlatButton = mui.FlatButton;
+let AppBar = mui.AppBar;
 
 class Todos extends React.Component {
+
+    static childContextTypes = {
+        muiTheme: React.PropTypes.object
+    };
 
     constructor(props) {
         super(props);
@@ -15,52 +25,42 @@ class Todos extends React.Component {
         };
     }
 
+    getChildContext() {
+        return {
+            muiTheme: River.ThemeManager.getCurrentTheme()
+        }
+    }
+
     componentDidMount() {
         TodoStore.addChangeListener(this._onChange.bind(this));
-        window.addEventListener("keydown", this._handleKeyPressed.bind(this), false);
         TodoStore.requestData();
     }
 
     componentWillUnmount() {
         TodoStore.removeChangeListener(this._onChange.bind(this));
-        window.removeEventListener("keydown", this._handleKeyPressed.bind(this));
     }
 
     render() {
         let state = this.state;
 
-        let errorStyle = {
-            color: 'red'
+        let contentStyle = {
+            position: 'relative',
+            top: '100px',
+            left: '100px',
+            width: '50%'
         };
 
         return (
-            <div className="Todos">
-                <h2> My Todo List </h2>
-                <TodoList todos={state.todos} />
-                <input value={state.newItemValue}
-                       onChange={this._handleNewItemChange.bind(this)} />
-                <a href="#!" onClick={this._onCreateClick.bind(this)}>
-                    - Create &nbsp;
-                </a>
-                <span style={errorStyle}>{TodoStore.getErrors()}</span>
+            <div>
+                <AppBar
+                    title="Todo App"
+                    iconClassNameRight="muidocs-icon-navigation-expand-more" />
+                <div style={contentStyle}>
+                    <InputAddTodo />
+                    <TodoList todos={state.todos} />
+                </div>
             </div>
         );
-    }
-
-    _handleNewItemChange(event) {
-        this.setState({
-            newItemValue: event.target.value
-        });
-    }
-
-    _onCreateClick() {
-        TodoActions.create(this.state.newItemValue);
-    }
-
-    _handleKeyPressed(event) {
-        if(event.keyCode == 13) {
-            this._onCreateClick();
-        }
     }
 
     _onChange() {
