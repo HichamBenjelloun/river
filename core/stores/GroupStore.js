@@ -31,7 +31,7 @@ class GroupStore extends Store {
         return this._items.get(id);
     }
 
-    fetch(items) {
+    store(items) {
         for(let item of items) {
             this.addItem(new this._model(item));
         }

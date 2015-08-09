@@ -19,7 +19,7 @@ class TodoStore extends GroupStore {
 
         switch(action.actionType) {
             case Actions.TODO_RECEIVE_DATA:
-                this.fetch(action.data);
+                this.store(action.data);
                 this.setIsLoading(false);
                 this.emitChange();
                 break;
@@ -48,6 +48,10 @@ class TodoStore extends GroupStore {
         this._errors = errors;
     }
 
+    clearErrors() {
+        this.setErrors({});
+    }
+
     create(text) {
         let id = Date.now();
         let todo = new Todo({
@@ -56,11 +60,11 @@ class TodoStore extends GroupStore {
             done: false
         });
 
-        if(!todo.hasErrors()) {
-            this.addItem(todo);
-            this.setErrors({});
-        } else {
+        if(todo.hasErrors()) {
             this.setErrors(todo.getErrors());
+        } else {
+            this.addItem(todo);
+            this.clearErrors();
         }
     }
 

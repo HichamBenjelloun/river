@@ -17,7 +17,7 @@ class IntegerField extends Field {
   }
 
   hasTypeError() {
-    return validator.isInt(this.value);
+    return !validator.isInt(this.value);
   }
 
   hasMinValueError() {

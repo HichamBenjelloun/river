@@ -9,7 +9,7 @@ class URLField extends Field {
   }
 
   hasTypeError() {
-    return validator.isURL(this.value);
+    return !validator.isURL(this.value);
   }
 
 }
