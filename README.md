@@ -16,8 +16,15 @@ The framework has its own base classes that sources, stores, models derive from 
 
 ## Install dependencies
 ```
-sudo apt-get install npm nodejs-legacy
+sudo apt-get install npm nodejs
 sudo npm install -g gulp
+```
+
+Update `nodejs` to the latest stable version:
+```
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
 ```
 
 ## Get started
