@@ -11,7 +11,6 @@ const TodoList = ({todos}) => {
         Array
             .from(todos.keys())
             .map(key => {
-                    console.log(key);
                     return (
                         <Fragment>
                             <TodoItem key={key} todo={todos.get(key)}/>

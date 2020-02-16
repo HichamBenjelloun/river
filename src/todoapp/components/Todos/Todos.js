@@ -47,7 +47,6 @@ class Todos extends React.Component {
         const classes = {};
 
         let state = this.state;
-        console.log(state.todos);
 
         let containerStyle = {
             position: 'absolute',
