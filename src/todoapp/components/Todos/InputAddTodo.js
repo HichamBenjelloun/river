@@ -3,7 +3,10 @@ import React from 'react';
 import {
     TextField,
     Button,
+    Fab,
 } from '@material-ui/core';
+
+import AddIcon from '@material-ui/icons/Add';
 
 import TodoStore from '../../stores/TodoStore';
 import TodoActions from '../../actions/TodoActions';
@@ -32,28 +35,29 @@ class InputAddTodo extends React.Component {
 
         const containerStyle = {
             display: 'flex',
+            height: '90px',
         };
 
         return (
             <div style={containerStyle}>
                 <TextField
+                    error={errors !== null}
                     ref="input"
                     label="Add todo..."
                     variant="outlined"
                     value={state.value}
                     onChange={this._handleChange}
                     helperText={errors}
-                    style={{flexGrow: 1}}
+                    style={{flexGrow: 1, alignSelf: 'flex-start',}}
                 />
-                <Button
-                    variant="contained"
+                <Fab
                     color="primary"
-                    disableElevation
+                    aria-label="add"
                     style={{marginLeft: '10px'}}
                     onClick={this._onCreateClick}
                 >
-                    Add item
-                </Button>
+                    <AddIcon/>
+                </Fab>
             </div>
         );
     }
