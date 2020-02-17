@@ -12,8 +12,8 @@ const TodoList = ({todos}) => {
             .from(todos.keys())
             .map(key => {
                     return (
-                        <Fragment>
-                            <TodoItem key={key} todo={todos.get(key)}/>
+                        <Fragment key={key}>
+                            <TodoItem todo={todos.get(key)}/>
                             <Divider/>
                         </Fragment>
                     );
