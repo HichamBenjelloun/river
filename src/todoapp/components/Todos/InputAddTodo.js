@@ -2,6 +2,7 @@ import React from 'react';
 
 import {
     TextField,
+    Button,
 } from '@material-ui/core';
 
 import TodoStore from '../../stores/TodoStore';
@@ -29,15 +30,31 @@ class InputAddTodo extends React.Component {
         let errors = TodoStore.getErrors();
         errors = (Object.keys(errors).length === 0) ? null : JSON.stringify(errors);
 
+        const containerStyle = {
+            display: 'flex',
+        };
+
         return (
-            <TextField
-                ref="input"
-                label="Add todo..."
-                variant="outlined"
-                value={state.value}
-                onChange={this._handleChange}
-                helperText={errors}
-            />
+            <div style={containerStyle}>
+                <TextField
+                    ref="input"
+                    label="Add todo..."
+                    variant="outlined"
+                    value={state.value}
+                    onChange={this._handleChange}
+                    helperText={errors}
+                    style={{flexGrow: 1}}
+                />
+                <Button
+                    variant="contained"
+                    color="primary"
+                    disableElevation
+                    style={{marginLeft: '10px'}}
+                    onClick={this._onCreateClick}
+                >
+                    Add item
+                </Button>
+            </div>
         );
     }
 

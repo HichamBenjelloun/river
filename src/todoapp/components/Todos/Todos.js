@@ -86,7 +86,6 @@ class Todos extends React.Component {
                                     <GitHubIcon/>
                                 </IconButton>
                             </Link>
-
                             <Typography variant="h6" className={classes.title}>
                                 Todo list demo
                             </Typography>
